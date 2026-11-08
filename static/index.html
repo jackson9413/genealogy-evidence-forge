@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genealogy Evidence Forge</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="mark">GF</div>
+    <div class="brand-text">
+      <h1>Genealogy Evidence Forge</h1>
+      <p class="tagline">Paste your family-history notes. Get a 0-100 evidence-readiness score, the conflicts hiding inside them, and the real record collections to search next.</p>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span id="health" class="pill pill-muted">checking service</span>
+    <button id="btn-theme" class="btn btn-ghost" type="button">Light mode</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="panel input-panel">
+    <div class="panel-head">
+      <h2>Your research notes</h2>
+      <span class="hint">One person per block, separated by a blank line</span>
+    </div>
+    <textarea id="notes" spellcheck="false" placeholder="John Albert Smith
+Born: 12 March 1872, Warren County, Ohio
+Died: 4 November 1943, Warren County, Ohio
+Buried: 7 November 1943, Union Cemetery, Warren County, Ohio
+Father: Samuel Smith (born 1841)
+Mother: Mary Jane Doe (born 1848)
+Spouse: Anna Louisa Miller (married 1896)
+Residence: 1880 - Tarlton Township, Warren County, Ohio
+Sources: 1880 US Census, Tarlton Township, Warren County, Ohio
+Sources: Death certificate, Ohio Department of Health, 1943"></textarea>
+    <div class="controls">
+      <label class="field">
+        <span>Standard</span>
+        <select id="mode">
+          <option value="standard">Standard family research</option>
+          <option value="professional">Professional standard</option>
+          <option value="family_story">Family story (keep it human)</option>
+          <option value="dna">DNA-led research</option>
+        </select>
+      </label>
+      <label class="field grow">
+        <span>Built-in sample</span>
+        <select id="sample"><option value="">Choose a sample</option></select>
+      </label>
+      <button id="btn-sample" class="btn btn-ghost" type="button">Load sample</button>
+      <button id="btn-analyze" class="btn btn-primary" type="button">Analyse</button>
+      <button id="btn-clear" class="btn btn-ghost" type="button">Clear</button>
+    </div>
+    <div class="export-row hidden" id="export-row">
+      <span class="hint">Export this analysis</span>
+      <a class="btn btn-ghost" id="dl-md" href="#">Markdown worksheet</a>
+      <a class="btn btn-ghost" id="dl-csv" href="#">CSV claim sheet</a>
+      <a class="btn btn-ghost" id="dl-json" href="#">JSON</a>
+    </div>
+    <details class="help">
+      <summary>Field reference - what to write</summary>
+      <div class="help-body">
+        <p><strong>One person per block.</strong> Put the name on its own line first, then labelled lines. Blank line starts the next person. A line of <code>---</code> also separates people.</p>
+        <ul>
+          <li><code>Born:</code> <code>Died:</code> <code>Buried:</code> <code>Christened:</code> <code>Married:</code> <code>Residence:</code> <code>Emigrated:</code> <code>Occupation:</code> - followed by a date, a place, or both separated by a comma.</li>
+          <li><code>Father:</code> <code>Mother:</code> <code>Spouse:</code> <code>Children:</code> <code>Also known as:</code> - followed by names.</li>
+          <li><code>Source:</code> (or <code>Sources:</code>, <code>Evidence:</code>) - followed by the citation. Separate multiple citations with a semicolon.</li>
+          <li><code>Conflict:</code> - anything the sources disagree about.</li>
+          <li><code>Note:</code> - background that is not a claim.</li>
+        </ul>
+        <p>Dates can be <code>12 March 1872</code>, <code>March 12, 1872</code>, <code>1872</code>, <code>c. 1872</code>, <code>before 1875</code>, <code>between 1860 and 1870</code> or <code>1940s</code>. Places are read as <code>Town, County, State</code> or <code>Parish, County, England</code>.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="panel results-panel">
+    <div id="empty-state" class="empty">
+      <h2>Nothing analysed yet</h2>
+      <p>Paste your notes on the left, or load one of the six built-in samples to see how the forge reads a claim.</p>
+      <ul class="empty-list">
+        <li><strong>Evidence-readiness score</strong> across sourcing, consistency, coverage, disambiguation and researchability.</li>
+        <li><strong>45+ finding rules</strong> - from "a census cannot give an exact birth date" to "this source was created before the event it proves".</li>
+        <li><strong>Identity analysis</strong> - tells you when two records with the same name are probably two different people.</li>
+        <li><strong>A research plan</strong> that names the record collections, the years and the fields to look in.</li>
+      </ul>
+    </div>
+    <div id="results" class="hidden"></div>
+  </section>
+</main>
+
+<section class="panel history-panel">
+  <div class="panel-head">
+    <h2>Research log</h2>
+    <span class="hint">Every analysis is stored locally in SQLite - rate it, annotate it, export it</span>
+  </div>
+  <div id="history" class="history"></div>
+</section>
+
+<footer class="footer">
+  <p>Local-first. Everything is analysed on this machine by a standard-library Python engine - no API keys, no network calls, no LLM. Your notes are never sent anywhere.</p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

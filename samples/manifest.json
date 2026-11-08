@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ohio-ancestor",
+    "title": "Well-sourced Ohio ancestor",
+    "file": "ohio_ancestor.md",
+    "description": "A nineteenth-century Ohio family with six independent sources, both parents named, and a full residence trail. This is what a finished claim looks like."
+  },
+  {
+    "id": "family-story",
+    "title": "A family story nobody has sourced",
+    "file": "family_story.md",
+    "description": "Everything here is memory. No places, no citations, and a claim that cannot be searched for at all."
+  },
+  {
+    "id": "same-name",
+    "title": "Two men with the same name",
+    "file": "same_name.md",
+    "description": "Two John Smiths in the same Ohio county, born on different sides of the Atlantic. The classic same-name collision."
+  },
+  {
+    "id": "yorkshire",
+    "title": "Yorkshire milliner, parish to probate",
+    "file": "yorkshire.md",
+    "description": "English parish registers, the 1911 census and the 1939 National Register - plus a child born in 1940, whose generation has a hole where the 1941 census should have been."
+  },
+  {
+    "id": "immigrant",
+    "title": "German immigrant, passenger to naturalisation",
+    "file": "immigrant.md",
+    "description": "Passenger list, declaration of intention and naturalisation - with the gap that matters: the arrival port was never recorded, so the passenger list cannot actually be searched."
+  },
+  {
+    "id": "conflicts",
+    "title": "A claim that contradicts itself",
+    "file": "conflicts.md",
+    "description": "Two death dates, an ambiguous numeric birth date, a census cited for an exact birth date, and a memorial as the only other source."
+  }
+]
